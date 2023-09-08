@@ -14,7 +14,7 @@ getInfoPenjualan = (dataPenjualan) => {
   let none = " "
 
   dataPenjualan.map(getBuku = (buku) => {
-    const modal = buku.hargaBeli * buku.totalTerjual //perhitungan modal yang dikeluarkan dari setiap produk
+    const modal = buku.hargaBeli * (buku.totalTerjual + buku.sisaStok) //perhitungan modal yang dikeluarkan dari setiap produk
     const keuntungan = (buku.hargaJual - buku.hargaBeli) * buku.totalTerjual // perhitungan keuntungan yang didapatkan dari setiap produk
     if (typeof totalModal == 'number' && typeof totalKeuntungan == 'number') {
       totalModal += modal //console.log(modal) -- modal yang dikeluarkan dari setiap produk
@@ -31,10 +31,10 @@ getInfoPenjualan = (dataPenjualan) => {
     } else return "ERROR : Invalid data type"
   })
 
-  persentaseKeuntungan = (totalKeuntungan / totalModal) * 100 //perhitungan keuntungan dalam persen
+  persentaseKeuntungan = ((totalKeuntungan / totalModal) * 100).toFixed(0) + "%"//perhitungan keuntungan dalam persen
   totalKeuntungan
   totalModal
-  persentaseKeuntungan.toFixed(0) + "%"
+  persentaseKeuntungan
   produkBukuTerlaris    
   penulisTerlaris
 
