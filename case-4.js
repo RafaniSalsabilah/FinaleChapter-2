@@ -7,12 +7,13 @@ let dataPenjualanPakAldi = [
 
 getTotalPenjualan = (dataPenjualan) => {
     let totalTerjualArr = dataPenjualan.map(value => value.totalTerjual) //pengambilan data totalTerjual di semua index data dan dijadikan satu array
-
     let totalTerjual = 0 //deklarasi tipe data
-    for (let terjual of totalTerjualArr) {
-        totalTerjual += terjual //penjumlahan keseluruhan totalTerjual
-    } 
-    return totalTerjual // console.log(totalTerjualArr) -- berisi array total terjual dari semua index
+    if (typeof dataPenjualanPakAldi == 'object' && typeof totalTerjualArr == 'undefined') {
+        for (let terjual of totalTerjualArr) {
+            totalTerjual += terjual //penjumlahan keseluruhan totalTerjual
+        } 
+    } else return "ERROR : Invalid data type"
+    return totalTerjual //console.log(typeof totalTerjualArr) -- berisi array total terjual dari semua index
 }
 
 console.log(getTotalPenjualan(dataPenjualanPakAldi))
