@@ -11,6 +11,7 @@ getInfoPenjualan = (dataPenjualan) => {
   let persentaseKeuntungan = 0 //deklarasi tipe data
   let produkBukuTerlaris = " " //deklarasi tipe data
   let penulisTerlaris = " " //deklarasi tipe data
+  let none = " "
 
   dataPenjualan.map(getBuku = (buku) => {
     const modal = buku.hargaBeli * buku.totalTerjual //perhitungan modal yang dikeluarkan dari setiap produk
@@ -31,11 +32,11 @@ getInfoPenjualan = (dataPenjualan) => {
   })
 
   persentaseKeuntungan = (totalKeuntungan / totalModal) * 100 //perhitungan keuntungan dalam persen
-  totalKeuntungan = totalKeuntungan
-  totalModal = totalModal
-  persentaseKeuntungan = persentaseKeuntungan.toFixed(0) + "%"
-  produkBukuTerlaris = produkBukuTerlaris    
-  penulisTerlaris = penulisTerlaris
+  totalKeuntungan
+  totalModal
+  persentaseKeuntungan.toFixed(0) + "%"
+  produkBukuTerlaris    
+  penulisTerlaris
 
   console.log("Total Keuntungan :" ,"Rp", totalKeuntungan.toLocaleString('id-ID'))
   console.log("Total Modal :" ,"Rp", totalModal.toLocaleString('id-ID'))
@@ -43,14 +44,7 @@ getInfoPenjualan = (dataPenjualan) => {
   console.log("Produk Buku Terlaris :", produkBukuTerlaris.namaProduk)
   console.log("Penulis Buku Terlaris :", penulisTerlaris.penulis)
 
-  return {
-    totalKeuntungan,
-    totalModal,
-    persentaseKeuntungan,
-    produkBukuTerlaris,    
-    penulisTerlaris : penulisTerlaris
-  }
-
+  return none
 }
 
 console.log(getInfoPenjualan(dataPenjualanNovel))
