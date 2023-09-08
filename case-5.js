@@ -43,16 +43,8 @@ getInfoPenjualan = (dataPenjualan) => {
   }
 }
 
-function formatRupiah(number) {
-  const formatter = new Intl.NumberFormat("id-ID", {
-      style: "currency",
-      currency: "IDR"
-  })
-  return formatter.format(number)
-}//function untuk mengubah angka dengan tipe data number ke dalam bentuk rupiah
-
-console.log("Total Keuntungan : " , formatRupiah(getInfoPenjualan(dataPenjualanNovel).totalKeuntungan))
-console.log("Total Modal : " , formatRupiah(getInfoPenjualan(dataPenjualanNovel).totalModal))
-console.log("Persentase Keuntungan : " , getInfoPenjualan(dataPenjualanNovel).persentaseKeuntungan)
-console.log("Produk Buku Terlaris : " , getInfoPenjualan(dataPenjualanNovel).produkBukuTerlaris.namaProduk)
-console.log("Penulis Buku Terlaris : " , getInfoPenjualan(dataPenjualanNovel).penulisTerlaris.penulis)
+console.log("Total Keuntungan :" ,'Rp ' + getInfoPenjualan(dataPenjualanNovel).totalKeuntungan.toLocaleString('id-ID'))
+console.log("Total Modal :" ,'Rp ' + getInfoPenjualan(dataPenjualanNovel).totalModal.toLocaleString('id-ID'))
+console.log("Persentase Keuntungan :" , getInfoPenjualan(dataPenjualanNovel).persentaseKeuntungan)
+console.log("Produk Buku Terlaris :" , getInfoPenjualan(dataPenjualanNovel).produkBukuTerlaris.namaProduk)
+console.log("Penulis Buku Terlaris :" , getInfoPenjualan(dataPenjualanNovel).penulisTerlaris.penulis)
