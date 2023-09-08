@@ -7,15 +7,14 @@ getAngkaTerbesarKedua = (personName) => {
       return "ERROR : Elemen dalam Index tidak tersedia" //pengecekan elemen index jika tidak sesuai dengan array yang tersedia
     }
   
-    let besar = -Infinity
-    let besarBesar = -Infinity
+    let besar = -Infinity //deklarasi tidak ada nilai terkecil
+    let besarBesar = -Infinity //deklarasi lanjutan atas tidak ada nilai terkecil
   
     for (let i = 0; i < personName.length; i++) { //elemen dalam array akan dibandingkan sehingga ditemukan elemen terbesar dan terbesar kedua
       if (personName[i] > besar) {
-        besarBesar = besar
-        besar = personName[i]
+        besar = personName[i] // console.log(besar) -- berisi angka dalam array yang memiliki nilai terbesar
       } else if (personName[i] > besarBesar && personName[i] != besar) {
-        besarBesar = personName[i]
+        besarBesar = personName[i] // console.log(besarBesar) -- berisi angka yang terbesar selanjutnya
       }
     }
   return besarBesar;
