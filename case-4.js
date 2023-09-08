@@ -12,9 +12,7 @@ getTotalPenjualan = (dataPenjualan) => {
     for (let terjual of totalTerjualArr) {
         totalTerjual += terjual //penjumlahan keseluruhan totalTerjual
     } 
-    // console.log(totalTerjualArr)  
-    return totalTerjual
+    return totalTerjual // console.log(totalTerjualArr) -- berisi array total terjual dari semua index
 }
 
 console.log(getTotalPenjualan(dataPenjualanPakAldi))
-// console.log(getTotalPenjualan(dataPenjualanPakAldi), "dari mana? dari setiap value proptery 'totalTerjual', yaitu 90 + 37 + 90 + 90")
