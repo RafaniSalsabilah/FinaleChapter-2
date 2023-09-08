@@ -15,32 +15,42 @@ getInfoPenjualan = (dataPenjualan) => {
   dataPenjualan.map(getBuku = (buku) => {
     const modal = buku.hargaBeli * buku.totalTerjual //perhitungan modal yang dikeluarkan dari setiap produk
     const keuntungan = (buku.hargaJual - buku.hargaBeli) * buku.totalTerjual // perhitungan keuntungan yang didapatkan dari setiap produk
+    if (typeof totalModal == 'number' && typeof totalKeuntungan == 'number') {
+      totalModal += modal //console.log(modal) -- modal yang dikeluarkan dari setiap produk
+      totalKeuntungan += keuntungan //console.log(keuntungan) -- keuntungan yang didapatkan dari setiap produk
 
-    totalModal += modal //console.log(modal) -- modal yang dikeluarkan dari setiap produk
-    totalKeuntungan += keuntungan //console.log(keuntungan) -- keuntungan yang didapatkan dari setiap produk
+      if (buku.totalTerjual > produkBukuTerlaris.totalTerjual || produkBukuTerlaris == " ") {// console.log(buku.totalTerjual) -- total buku yang terjual // console.log(produkBukuTerlaris.totalTerjual) -- berisi total buku di index sebelumnya yang terjual
+        produkBukuTerlaris = buku
+      }
 
-    if (buku.totalTerjual > produkBukuTerlaris.totalTerjual || produkBukuTerlaris == " ") {// console.log(buku.totalTerjual) -- total buku yang terjual // console.log(produkBukuTerlaris.totalTerjual) -- berisi total buku di index sebelumnya yang terjual
-      produkBukuTerlaris = buku
-    }
-
-    if (buku.totalTerjual > penulisTerlaris.totalTerjual || penulisTerlaris == " ") {// console.log(buku.totalTerjual) -- total buku yang terjual // console.log(penulisTerlaris.totalTerjual) -- total buku di index sebelumnya yang terjual sesuai penulisnya
-      penulisTerlaris = buku
-    }
+      if (buku.totalTerjual > penulisTerlaris.totalTerjual || penulisTerlaris == " ") {// console.log(buku.totalTerjual) -- total buku yang terjual // console.log(penulisTerlaris.totalTerjual) -- total buku di index sebelumnya yang terjual sesuai penulisnya
+        penulisTerlaris = buku
+      }
+      
+    } else return "ERROR : Invalid data type"
   })
 
   persentaseKeuntungan = (totalKeuntungan / totalModal) * 100 //perhitungan keuntungan dalam persen
+  totalKeuntungan = totalKeuntungan
+  totalModal = totalModal
+  persentaseKeuntungan = persentaseKeuntungan.toFixed(0) + "%"
+  produkBukuTerlaris = produkBukuTerlaris    
+  penulisTerlaris = penulisTerlaris
+
+  console.log("Total Keuntungan :" ,"Rp", totalKeuntungan.toLocaleString('id-ID'))
+  console.log("Total Modal :" ,"Rp", totalModal.toLocaleString('id-ID'))
+  console.log("Persentase Keuntungan :", persentaseKeuntungan)
+  console.log("Produk Buku Terlaris :", produkBukuTerlaris.namaProduk)
+  console.log("Penulis Buku Terlaris :", penulisTerlaris.penulis)
 
   return {
-    totalKeuntungan: totalKeuntungan,
-    totalModal: totalModal,
-    persentaseKeuntungan: persentaseKeuntungan.toFixed(0) + "%",
-    produkBukuTerlaris: produkBukuTerlaris,
-    penulisTerlaris: penulisTerlaris
+    totalKeuntungan,
+    totalModal,
+    persentaseKeuntungan,
+    produkBukuTerlaris,    
+    penulisTerlaris : penulisTerlaris
   }
+
 }
 
-console.log("Total Keuntungan :" ,"Rp", getInfoPenjualan(dataPenjualanNovel).totalKeuntungan.toLocaleString('id-ID'))
-console.log("Total Modal :" ,"Rp", getInfoPenjualan(dataPenjualanNovel).totalModal.toLocaleString('id-ID'))
-console.log("Persentase Keuntungan :", getInfoPenjualan(dataPenjualanNovel).persentaseKeuntungan)
-console.log("Produk Buku Terlaris :", getInfoPenjualan(dataPenjualanNovel).produkBukuTerlaris.namaProduk)
-console.log("Penulis Buku Terlaris :", getInfoPenjualan(dataPenjualanNovel).penulisTerlaris.penulis)
+console.log(getInfoPenjualan(dataPenjualanNovel))
