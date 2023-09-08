@@ -12,7 +12,7 @@ getInfoPenjualan = (dataPenjualan) => {
   let produkBukuTerlaris = " " //deklarasi tipe data
   let penulisTerlaris = " " //deklarasi tipe data
 
-  dataPenjualan.forEach(function(buku) {
+  dataPenjualan.map(function(buku) {
     const modal = buku.hargaBeli * buku.totalTerjual //perhitungan modal yang dikeluarkan dari setiap produk
     const keuntungan = (buku.hargaJual - buku.hargaBeli) * buku.totalTerjual // perhitungan keuntungan yang didapatkan dari setiap produk
 
